@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ app_name }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.6/purify.min.js"></script>
+</head>
+<body>
+  <nav class="nav">
+    <div class="brand"><span class="logo">✨</span> {{ app_name }}</div>
+    <button id="clearBtn" class="ghost-btn" type="button">New chat</button>
+  </nav>
+
+  <main class="container">
+    <section class="hero" id="hero">
+      <h1>Ask me anything</h1>
+      <p>Clear, helpful answers powered by Claude.</p>
+      <div class="chips" id="chips">
+        <button class="chip" type="button">Explain how the internet works in simple terms</button>
+        <button class="chip" type="button">Help me plan a weekly study schedule</button>
+        <button class="chip" type="button">Write a Python function to reverse a string</button>
+        <button class="chip" type="button">Give me tips for a strong resume</button>
+      </div>
+    </section>
+
+    <section class="chat" id="chat" aria-live="polite"></section>
+  </main>
+
+  <footer class="composer-wrap">
+    <div class="composer">
+      <textarea id="input" rows="1" placeholder="Message {{ app_name }}…  (Enter to send, Shift+Enter for new line)" maxlength="8000"></textarea>
+      <button id="sendBtn" type="button" aria-label="Send">➤</button>
+    </div>
+    <p class="note">Model: {{ model }} · AI can make mistakes.</p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
